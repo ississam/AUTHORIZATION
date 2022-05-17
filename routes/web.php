@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ManageAccesViewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,5 +21,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
+
+Route::get('/allowed', [ManageAccesViewsController::class, 'allowedView']);
+
+Route::get('/blocked', [ManageAccesViewsController::class, 'blockedView']);
 
 require __DIR__.'/auth.php';
